@@ -29,7 +29,7 @@ class AS3935:
     def get_distance(self):
         self.read_data()
         if self.registers[0x07] & 0x3F == 0x3F:
-            return false
+            return False
         else:
             return self.registers[0x07] & 0x3F
 
@@ -70,9 +70,9 @@ class AS3935:
     def get_indoors(self):
         self.read_data()
         if self.registers[0x00] & 0x10 == 0x10:
-            return true
+            return True
         else:
-            return false
+            return False
 
     def set_indoors(self, indoors):
         self.read_data()
@@ -93,9 +93,9 @@ class AS3935:
     def get_mask_disturber(self):
         self.read_data()
         if self.registers[0x03] & 0x10 == 0x10:
-            return true
+            return True
         else:
-            return false
+            return False
 
     def set_byte(self, register, value):
         self.i2cbus.write_byte_data(self.address, register, value)
