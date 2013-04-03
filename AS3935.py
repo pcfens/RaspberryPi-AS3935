@@ -43,6 +43,20 @@ class AS3935:
         write_data = (self.registers[0x01] & 0xC7) + noisefloor
         self.set_byte(0x01, write_data)
 
+    def lower_noise_floor(self, min_noise = 0)
+        floor = self.get_noise_floor()
+        if floor > min_noise:
+            floor = floor - 1
+            sensor.set_noise_floor(floor)
+        return floor
+
+    def raise_noise_floor(self, max_noise = 7)
+        floor = self.get_noise_floor()
+        if floor < max_noise:
+            floor = floor + 1
+            sensor.set_noise_floor(floor)
+        return floor
+
     def get_min_strikes(self):
         self.read_data()
         return (self.registers[0x02] >> 4) & 0x03

@@ -6,7 +6,8 @@ GPIO.setmode(GPIO.BCM)
 sensor = AS3935(address = 0x00, bus = 0)
 
 sensor.calibrate()
-sensor.set_indoors(1)
+sensor.set_indoors(True)
+sensor.set_noise_floor(0)
 
 def handle_interrupt():
     global sensor
@@ -14,23 +15,14 @@ def handle_interrupt():
     reason = sensor.get_interrupt()
     if reason == 0x01:
         print "Noise level too high - adjusting"
-        floor = sensor.get_noise_floor()
-        if floor < 7:
-            floor = floor + 1
-            sensor.set_noise_floor(floor)
-        else:
-            print "Noise floor is already at max"
+        sensor.raise_noise_floor()
     elif reason == 0x04:
         print "Disturber detected - masking"
-        sensor.set_mask_disturber(1)
+        sensor.set_mask_disturber(True)
     elif reason == 0x08:
         distance = sensor.get_distance()
         print "We sensed lightning!"
         print "It was " + distance + "km away."
-
-def falling_edge():
-    print "Interrupt cleared"
-
 
 pin = 17
 GPIO.setup(pin, GPIO.IN)
