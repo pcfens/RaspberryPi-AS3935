@@ -45,5 +45,5 @@ You may need edit line 6 of lightning.py so that the correct address is read.
 If you have one of the newer 512MB Pi boards, then you need to adjust line 6
 to read
 ```python
-sensor - AS3935(address = 0x00, bus = 1)
+sensor = AS3935(address = 0x00, bus = 1)
 ```
