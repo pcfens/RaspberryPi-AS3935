@@ -2,7 +2,7 @@ RaspberryPi-AS3935
 ==================
 
 A python library and demo script for interacting with the
-[AMS Franklin Lightning Sensor][http://www.ams.com/eng/Products/RF-Products/Lightning-Sensor/AS3935].
+[AMS Franklin Lightning Sensor](http://www.ams.com/eng/Products/RF-Products/Lightning-Sensor/AS3935).
 
 This script will only work if the correct kernel modules are loaded
 on your Pi.  Adafruit has a nice tutorial set up, though depending on
@@ -13,7 +13,7 @@ you run `i2cdetect`.
 ## Breakout Board
 
 The AS3935 is a small chip, and rather than trying to solder it myself
-I purchased a (v2) breakout board from [Embedded Adventures][http://www.embeddedadventures.com/as3935_lightning_sensor_module_mod-1016.html].
+I purchased a (v2) breakout board from [Embedded Adventures](http://www.embeddedadventures.com/as3935_lightning_sensor_module_mod-1016.html).
 
 
 ## Connecting the AS3935
@@ -37,8 +37,8 @@ You may need edit line 6 of lightning.py so that the correct address is read.
 | Breakout Board | Default Address |
 | :------------- | :-------------- |
 | Embedded Adeventures v2 | 0x00 |
-| Embedded Adeventures v4 | 0x03 |
-| Tautic Electronics | 0x00 |
+| Embedded Adeventures v4 (untested) | 0x03 |
+| Tautic Electronics (untested) | 0x00 |
 
 ### RaspberryPi Model
 
