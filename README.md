@@ -5,9 +5,9 @@ A python library and demo script for interacting with the
 [AMS Franklin Lightning Sensor](http://www.ams.com/eng/Products/RF-Products/Lightning-Sensor/AS3935).
 
 This script will only work if the correct kernel modules are loaded
-on your Pi.  Adafruit has a nice tutorial set up, though depending on
-the breakout board that you use, you may not see anything show up when
-you run `i2cdetect`.
+on your Pi.  Adafruit has a nice [tutorial](http://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c)
+set up, though depending on the breakout board that you use, you may 
+not see anything show up when you run `i2cdetect`.
 
 
 ## Breakout Board
