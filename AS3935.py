@@ -101,5 +101,5 @@ class AS3935:
         self.i2cbus.write_byte_data(self.address, register, value)
 
     def read_data(self):
-        self.registers = self.i2cbus.read_i2c_block_data(0x00, 0x00)
+        self.registers = self.i2cbus.read_i2c_block_data(self.address, 0x00)
         
