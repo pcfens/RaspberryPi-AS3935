@@ -92,7 +92,7 @@ class AS3935:
 
     def get_mask_disturber(self):
         self.read_data()
-        if self.registers[0x03] & 0x10 == 0x10:
+        if self.registers[0x03] & 0x20 == 0x20:
             return True
         else:
             return False
