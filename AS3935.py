@@ -47,14 +47,14 @@ class AS3935:
         floor = self.get_noise_floor()
         if floor > min_noise:
             floor = floor - 1
-            sensor.set_noise_floor(floor)
+            self.set_noise_floor(floor)
         return floor
 
     def raise_noise_floor(self, max_noise = 7):
         floor = self.get_noise_floor()
         if floor < max_noise:
             floor = floor + 1
-            sensor.set_noise_floor(floor)
+            self.set_noise_floor(floor)
         return floor
 
     def get_min_strikes(self):

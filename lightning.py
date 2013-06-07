@@ -9,9 +9,9 @@ sensor.calibrate()
 sensor.set_indoors(True)
 sensor.set_noise_floor(0)
 
-def handle_interrupt():
-    global sensor
+def handle_interrupt(channel):
     time.sleep(0.003)
+    global sensor
     reason = sensor.get_interrupt()
     if reason == 0x01:
         print "Noise level too high - adjusting"
