@@ -22,7 +22,7 @@ def handle_interrupt(channel):
     elif reason == 0x08:
         distance = sensor.get_distance()
         print "We sensed lightning!"
-        print "It was " + distance + "km away."
+        print "It was " + str(distance) + "km away."
 
 pin = 17
 GPIO.setup(pin, GPIO.IN)
