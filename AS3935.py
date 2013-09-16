@@ -9,13 +9,19 @@ class AS3935:
         self.address = address
         self.i2cbus = smbus.SMBus(bus)
 
-    def calibrate(self):
+    def calibrate(self, tun_cap = None):
         """Calibrate the lightning sensor - this takes up to half a second
         and is blocking"""
         time.sleep(0.08)
-        self.set_byte(0x3C, 0x96)
-        time.sleep(0.002)
         self.read_data()
+        if tun_cap != None:
+            if tun_cap < 0x10 and tun_cap > -1:
+                self.set_byte(0x08, self.registers[0x08] | tun_cap)
+                time.sleep(0.002)
+            else:
+                raise Exception("Value of TUN_CAP must be between 0 and 15")
+        self.set_byte(0x3D, 0x96)
+        time.sleep(0.002)
         self.set_byte(0x08, self.registers[0x08] | 0x10)
         time.sleep(0.002)
         self.read_data()
