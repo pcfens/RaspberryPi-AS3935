@@ -16,7 +16,7 @@ class AS3935:
         self.read_data()
         if tun_cap != None:
             if tun_cap < 0x10 and tun_cap > -1:
-                self.set_byte(0x08, self.registers[0x08] | tun_cap)
+                self.set_byte(0x08, (self.registers[0x08] & 0xF0) | tun_cap)
                 time.sleep(0.002)
             else:
                 raise Exception("Value of TUN_CAP must be between 0 and 15")
