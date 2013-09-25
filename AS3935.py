@@ -86,6 +86,7 @@ class AS3935:
             write_value = (self.registers[0x00] & 0xE0) + 0x12
         else:
             write_value = (self.registers[0x00] & 0xE0) + 0x0E
+        self.set_byte(0x00, write_value)
 
     def set_mask_disturber(self, mask_dist):
         self.read_data()
@@ -94,7 +95,6 @@ class AS3935:
         else:
             write_value = self.registers[0x03] & 0xDF
         self.set_byte(0x03, write_value)
-        self.read_data()
 
     def get_mask_disturber(self):
         self.read_data()
