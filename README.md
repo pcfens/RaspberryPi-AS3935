@@ -24,7 +24,7 @@ In my test setup I connected my breakout board to the Pi as shown
 | ---------: | :--------------- |
 | 4 (GND)    | 25 (Ground)      |
 | 5 (VDD)    | 1 (3v3 Power)    |
-| 10 (IRQ)   | 17 (GPIO)        |
+| 10 (IRQ)   | 11 (GPIO 17)     |
 | 11 (I2CL)  | 5 (SCL)          |
 | 13 (I2CD)  | 3 (SDA)          |
 
