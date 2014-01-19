@@ -1,9 +1,11 @@
-from AS3935 import AS3935
+from RPi_AS3935 import RPi_AS3935
+
 import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BCM)
-sensor = AS3935(address = 0x00, bus = 0)
+
+sensor = RPi_AS3935(address = 0x00, bus = 0)
 
 sensor.calibrate(tun_cap=0x0F)
 sensor.set_indoors(True)

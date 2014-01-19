@@ -1,9 +1,9 @@
 import smbus
 import time
 
-class AS3935:
+class RPi_AS3935:
     """A basic class used for interacting with the AS3935 lightning
-    sensor"""
+    sensor from a Raspberry Pi over I2C"""
 
     def __init__(self, address, bus=0):
         self.address = address
