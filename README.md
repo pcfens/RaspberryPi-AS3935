@@ -9,6 +9,17 @@ on your Pi.  Adafruit has a nice [tutorial](http://learn.adafruit.com/adafruits-
 set up, though depending on the breakout board that you use, you may 
 not see anything show up when you run `i2cdetect`.
 
+## Installation
+
+You can install this module by running
+```
+pip install RPi_AS3935
+```
+
+or you can clone this repository and run
+```
+python setup.py install
+```
 
 ## Breakout Board
 
@@ -32,7 +43,7 @@ In my test setup I connected my breakout board to the Pi as shown
 
 ### Addressing 
 
-You may need edit line 6 of lightning.py so that the correct address is read.
+You may need edit line 8 of lightning.py so that the correct address is read.
 
 | Breakout Board | Default Address |
 | :------------- | :-------------- |
@@ -42,8 +53,8 @@ You may need edit line 6 of lightning.py so that the correct address is read.
 
 ### RaspberryPi Model
 
-If you have one of the newer 512MB Pi boards, then you need to adjust line 6
-to read
+If you have one of the newer 512MB Pi boards, then you need to adjust line 8
+in the demo script to read
 ```python
-sensor = AS3935(address = 0x00, bus = 1)
+sensor = RPi_AS3935(address = 0x00, bus = 1)
 ```
