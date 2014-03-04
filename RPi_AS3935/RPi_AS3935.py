@@ -9,7 +9,7 @@ class RPi_AS3935:
         self.address = address
         self.i2cbus = smbus.SMBus(bus)
 
-    def calibrate(self, tun_cap = None):
+    def calibrate(self, tun_cap=None):
         """Calibrate the lightning sensor - this takes up to half a second
         and is blocking"""
         time.sleep(0.08)
@@ -49,14 +49,14 @@ class RPi_AS3935:
         write_data = (self.registers[0x01] & 0xC7) + noisefloor
         self.set_byte(0x01, write_data)
 
-    def lower_noise_floor(self, min_noise = 0):
+    def lower_noise_floor(self, min_noise=0):
         floor = self.get_noise_floor()
         if floor > min_noise:
             floor = floor - 1
             self.set_noise_floor(floor)
         return floor
 
-    def raise_noise_floor(self, max_noise = 7):
+    def raise_noise_floor(self, max_noise=7):
         floor = self.get_noise_floor()
         if floor < max_noise:
             floor = floor + 1
