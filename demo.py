@@ -27,15 +27,11 @@ def handle_interrupt(channel):
         print "It was " + str(distance) + "km away."
 
 pin = 17
+
 GPIO.setup(pin, GPIO.IN)
-GPIO.setup(24, GPIO.IN)
 GPIO.add_event_detect(pin, GPIO.RISING, callback=handle_interrupt)
 
-try: 
-    print "Waiting for lightning - or at least something that looks like it"
-    GPIO.wait_for_edge(24, GPIO.FALLING)
+print "Waiting for lightning - or at least something that looks like it"
 
-except KeyboardInterrupt:  
-    GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
-
-GPIO.cleanup()           # clean up GPIO on normal exit  
+while True:
+    time.sleep(1.0)
