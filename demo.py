@@ -1,4 +1,4 @@
-from RPi_AS3935 import RPi_AS3935
+#! /usr/bin/python
 
 import RPi.GPIO as GPIO
 import time
