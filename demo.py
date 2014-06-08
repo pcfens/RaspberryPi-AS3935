@@ -5,6 +5,8 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
+# note: bus must be '0' for the older 256MB raspberry pi's while the newer 512MB should have bus=1
+# address must be 0x03 for the V4 of the MOD-1016
 sensor = RPi_AS3935(address=0x00, bus=0)
 
 sensor.calibrate(tun_cap=0x0F)
