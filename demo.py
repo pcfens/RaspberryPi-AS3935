@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from RPi_AS3935 import RPi_AS3935
 
 import RPi.GPIO as GPIO
