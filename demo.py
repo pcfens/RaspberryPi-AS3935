@@ -6,6 +6,9 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
+# Rev. 1 Raspberry Pis should leave bus set at 0, while rev. 2 Pis should set
+# bus equal to 1. The address should be changed to match the address of the
+# sensor. (Common implementations are in README.md)
 sensor = RPi_AS3935(address=0x00, bus=0)
 
 sensor.calibrate(tun_cap=0x0F)

@@ -43,7 +43,7 @@ In my test setup I connected my breakout board to the Pi as shown
 
 ### Addressing 
 
-You may need edit line 9 of demo.py so that the correct address is read.
+You may need edit line 12 of demo.py so that the correct address is read.
 
 | Breakout Board | Default Address |
 | :------------- | :-------------- |
@@ -53,7 +53,7 @@ You may need edit line 9 of demo.py so that the correct address is read.
 
 ### RaspberryPi Model
 
-If you have one of the newer 512MB Pi boards, then you need to adjust line 9
+If you have one of the newer 512MB Pi boards, then you need to adjust line 12
 in the demo script to read
 ```python
 sensor = RPi_AS3935(address = 0x00, bus = 1)
