@@ -3,6 +3,7 @@ from RPi_AS3935 import RPi_AS3935
 
 import RPi.GPIO as GPIO
 import time
+from datetime import datetime
 
 GPIO.setmode(GPIO.BCM)
 
@@ -26,9 +27,11 @@ def handle_interrupt(channel):
         print "Disturber detected - masking"
         sensor.set_mask_disturber(True)
     elif reason == 0x08:
+        now = datetime.now().strftime('%H:%M:%S - %Y/%m/%d')
         distance = sensor.get_distance()
         print "We sensed lightning!"
-        print "It was " + str(distance) + "km away."
+        print "It was " + str(distance) + "km away. (%s)" % now
+        print ""
 
 pin = 17
 
