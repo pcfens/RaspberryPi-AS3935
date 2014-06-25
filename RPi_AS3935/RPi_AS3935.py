@@ -107,5 +107,9 @@ class RPi_AS3935:
         self.i2cbus.write_byte_data(self.address, register, value)
 
     def read_data(self):
-        self.registers = self.i2cbus.read_i2c_block_data(self.address, 0x00)
+        try:
+            self.registers = self.i2cbus.read_i2c_block_data(self.address, 0x00)
         
+        # V4 has a problem where reading register 0 fails the first time
+        except IOError:
+            self.registers = self.i2cbus.read_i2c_block_data(self.address, 0x00)
