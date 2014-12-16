@@ -7,6 +7,6 @@ setup(name = 'RPi_AS3935',
       author_email = 'phillip.fenstermacher@gmail.com',
       url = 'https://github.com/pcfens/RaspberryPi-AS3935',
       packages = ['RPi_AS3935'],
-      keywords = [ 'RaspberryPi', 'AS3935', 'lightning, 'weather' ],
+      keywords = [ 'RaspberryPi', 'AS3935', 'lightning', 'weather' ],
       license = 'GPL',
 )
