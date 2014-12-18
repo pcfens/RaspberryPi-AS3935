@@ -65,13 +65,33 @@ class RPi_AS3935:
 
     def get_min_strikes(self):
         self.read_data()
-        return (self.registers[0x02] >> 4) & 0x03
+        value = (self.registers[0x02] >> 4) & 0x03
+        if value == 0:
+            return 1
+        elif value == 1:
+            return 5
+        elif value == 2:
+            return 9
+        elif value == 3:
+            return 16
 
     def set_min_strikes(self, minstrikes):
-        self.read_data()
-        minstrikes = (minstrikes & 0x03) << 4
-        write_data = (self.registers[0x02] & 0xE7) + minstrikes
-        self.set_byte(0x02, write_data)
+        if minstrikes == 1 or minstrikes == 5 or minstrikes == 9 or minstrikes==16:
+            if minstrikes == 1:
+                minstrikes = 0
+            elif minstrikes == 5:
+                minstrikes = 1
+            elif minstrikes == 9:
+                minstrikes = 2
+            elif minstrikes == 16:
+                minstrikes = 3
+
+            self.read_data()
+            minstrikes = (minstrikes & 0x03) << 4
+            write_data = (self.registers[0x02] & 0xE7) + minstrikes
+            self.set_byte(0x02, write_data)
+        else:
+            raise Exception ("Value must be 1, 5, 9, or 16")
 
     def get_indoors(self):
         self.read_data()
