@@ -88,7 +88,7 @@ class RPi_AS3935:
 
             self.read_data()
             minstrikes = (minstrikes & 0x03) << 4
-            write_data = (self.registers[0x02] & 0xE7) + minstrikes
+            write_data = (self.registers[0x02] & 0xCF) + minstrikes
             self.set_byte(0x02, write_data)
         else:
             raise Exception ("Value must be 1, 5, 9, or 16")
