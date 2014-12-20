@@ -41,12 +41,12 @@ class RPi_AS3935:
 
     def get_noise_floor(self):
         self.read_data()
-        return (self.registers[0x01] & 0x38) >> 4
+        return (self.registers[0x01] & 0x70) >> 4
 
     def set_noise_floor(self, noisefloor):
         self.read_data()
         noisefloor = (noisefloor & 0x07) << 4
-        write_data = (self.registers[0x01] & 0xC7) + noisefloor
+        write_data = (self.registers[0x01] & 0x8F) + noisefloor
         self.set_byte(0x01, write_data)
 
     def lower_noise_floor(self, min_noise=0):
