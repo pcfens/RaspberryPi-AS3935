@@ -27,7 +27,10 @@ class RPi_AS3935:
         self.read_data()
         self.set_byte(0x08, self.registers[0x08] & 0xDF)
         time.sleep(0.002)
-        
+
+    def reset(self):
+		self.set_byte(0x3C, 0x96)
+
     def get_interrupt(self):
         self.read_data()
         return self.registers[0x03] & 0x0F
@@ -108,4 +111,3 @@ class RPi_AS3935:
 
     def read_data(self):
         self.registers = self.i2cbus.read_i2c_block_data(self.address, 0x00)
-        
