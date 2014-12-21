@@ -16,6 +16,7 @@ sensor.set_indoors(True)
 sensor.set_noise_floor(0)
 sensor.calibrate(tun_cap=0x0F)
 
+
 def handle_interrupt(channel):
     time.sleep(0.003)
     global sensor

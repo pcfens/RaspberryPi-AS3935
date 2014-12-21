@@ -1,6 +1,7 @@
 import smbus
 import time
 
+
 class RPi_AS3935:
     """A basic class used for interacting with the AS3935 lightning
     sensor from a Raspberry Pi over I2C"""
@@ -14,7 +15,7 @@ class RPi_AS3935:
         and is blocking"""
         time.sleep(0.08)
         self.read_data()
-        if tun_cap != None:
+        if tun_cap is not None:
             if tun_cap < 0x10 and tun_cap > -1:
                 self.set_byte(0x08, (self.registers[0x08] & 0xF0) | tun_cap)
                 time.sleep(0.002)
@@ -27,7 +28,7 @@ class RPi_AS3935:
         self.read_data()
         self.set_byte(0x08, self.registers[0x08] & 0xDF)
         time.sleep(0.002)
-        
+
     def get_interrupt(self):
         self.read_data()
         return self.registers[0x03] & 0x0F
@@ -76,22 +77,21 @@ class RPi_AS3935:
             return 16
 
     def set_min_strikes(self, minstrikes):
-        if minstrikes == 1 or minstrikes == 5 or minstrikes == 9 or minstrikes==16:
-            if minstrikes == 1:
-                minstrikes = 0
-            elif minstrikes == 5:
-                minstrikes = 1
-            elif minstrikes == 9:
-                minstrikes = 2
-            elif minstrikes == 16:
-                minstrikes = 3
-
-            self.read_data()
-            minstrikes = (minstrikes & 0x03) << 4
-            write_data = (self.registers[0x02] & 0xCF) + minstrikes
-            self.set_byte(0x02, write_data)
+        if minstrikes == 1:
+            minstrikes = 0
+        elif minstrikes == 5:
+            minstrikes = 1
+        elif minstrikes == 9:
+            minstrikes = 2
+        elif minstrikes == 16:
+            minstrikes = 3
         else:
-            raise Exception ("Value must be 1, 5, 9, or 16")
+            raise Exception("Value must be 1, 5, 9, or 16")
+
+        self.read_data()
+        minstrikes = (minstrikes & 0x03) << 4
+        write_data = (self.registers[0x02] & 0xCF) + minstrikes
+        self.set_byte(0x02, write_data)
 
     def get_indoors(self):
         self.read_data()
@@ -128,4 +128,3 @@ class RPi_AS3935:
 
     def read_data(self):
         self.registers = self.i2cbus.read_i2c_block_data(self.address, 0x00)
-        
