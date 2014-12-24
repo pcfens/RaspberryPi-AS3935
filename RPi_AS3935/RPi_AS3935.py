@@ -1,6 +1,7 @@
 import smbus
 import time
 
+
 class RPi_AS3935:
     """A basic class used for interacting with the AS3935 lightning
     sensor from a Raspberry Pi over I2C"""
@@ -14,7 +15,7 @@ class RPi_AS3935:
         and is blocking"""
         time.sleep(0.08)
         self.read_data()
-        if tun_cap != None:
+        if tun_cap is not None:
             if tun_cap < 0x10 and tun_cap > -1:
                 self.set_byte(0x08, (self.registers[0x08] & 0xF0) | tun_cap)
                 time.sleep(0.002)
@@ -29,7 +30,7 @@ class RPi_AS3935:
         time.sleep(0.002)
 
     def reset(self):
-		self.set_byte(0x3C, 0x96)
+        self.set_byte(0x3C, 0x96)
 
     def get_interrupt(self):
         self.read_data()
@@ -44,12 +45,12 @@ class RPi_AS3935:
 
     def get_noise_floor(self):
         self.read_data()
-        return (self.registers[0x01] & 0x38) >> 4
+        return (self.registers[0x01] & 0x70) >> 4
 
     def set_noise_floor(self, noisefloor):
         self.read_data()
         noisefloor = (noisefloor & 0x07) << 4
-        write_data = (self.registers[0x01] & 0xC7) + noisefloor
+        write_data = (self.registers[0x01] & 0x8F) + noisefloor
         self.set_byte(0x01, write_data)
 
     def lower_noise_floor(self, min_noise=0):
@@ -68,12 +69,31 @@ class RPi_AS3935:
 
     def get_min_strikes(self):
         self.read_data()
-        return (self.registers[0x02] >> 4) & 0x03
+        value = (self.registers[0x02] >> 4) & 0x03
+        if value == 0:
+            return 1
+        elif value == 1:
+            return 5
+        elif value == 2:
+            return 9
+        elif value == 3:
+            return 16
 
     def set_min_strikes(self, minstrikes):
+        if minstrikes == 1:
+            minstrikes = 0
+        elif minstrikes == 5:
+            minstrikes = 1
+        elif minstrikes == 9:
+            minstrikes = 2
+        elif minstrikes == 16:
+            minstrikes = 3
+        else:
+            raise Exception("Value must be 1, 5, 9, or 16")
+
         self.read_data()
         minstrikes = (minstrikes & 0x03) << 4
-        write_data = (self.registers[0x02] & 0xE7) + minstrikes
+        write_data = (self.registers[0x02] & 0xCF) + minstrikes
         self.set_byte(0x02, write_data)
 
     def get_indoors(self):

@@ -12,9 +12,10 @@ GPIO.setmode(GPIO.BCM)
 # sensor. (Common implementations are in README.md)
 sensor = RPi_AS3935(address=0x00, bus=0)
 
-sensor.calibrate(tun_cap=0x0F)
 sensor.set_indoors(True)
 sensor.set_noise_floor(0)
+sensor.calibrate(tun_cap=0x0F)
+
 
 def handle_interrupt(channel):
     time.sleep(0.003)

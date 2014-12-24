@@ -1,6 +1,8 @@
 RaspberryPi-AS3935
 ==================
 
+[![Build Status](https://travis-ci.org/pcfens/RaspberryPi-AS3935.png?branch=master)](https://travis-ci.org/pcfens/RaspberryPi-AS3935)
+
 A python library and demo script for interacting with the
 [AMS Franklin Lightning Sensor](http://www.ams.com/eng/Products/RF-Products/Lightning-Sensor/AS3935).
 
