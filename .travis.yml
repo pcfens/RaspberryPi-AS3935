@@ -4,6 +4,6 @@ python:
 install:
   - pip install pep8
 script:
-  - "pep8 --ignore=E501 RPi_AS3935 && pep8 --ignore=E501 demo.py && pep8 --ignore=E501 setup.py"
+  - "pep8 --ignore=E501 RPi_AS3935 && pep8 --ignore=E501 *.py"
 notifications:
   email: false
