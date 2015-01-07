@@ -125,6 +125,14 @@ class RPi_AS3935:
             return True
         else:
             return False
+			
+	def set_disp_lco(self, display):
+		self.read_data()
+		if display:
+			self.set_byte(0x08, (self.registers[0x08] | 0x80))
+		else:
+			self.set_byte(0x08, (self.registers[0x08] & 0x7F))
+		time.sleep(0.002)
 
     def set_byte(self, register, value):
         self.i2cbus.write_byte_data(self.address, register, value)
