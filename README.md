@@ -60,3 +60,9 @@ in the demo script to read
 ```python
 sensor = RPi_AS3935(address = 0x00, bus = 1)
 ```
+
+## Implementations
+
+* [Push based web interface](https://github.com/pcfens/RPi-AS3935-Web)
+
+Send a Pull Request if you'd like to get your original implementation listed here.
