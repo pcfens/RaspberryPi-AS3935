@@ -1,4 +1,3 @@
-import smbus
 import time
 
 
@@ -8,6 +7,7 @@ class RPi_AS3935:
 
     def __init__(self, address, bus=0):
         self.address = address
+        import smbus
         self.i2cbus = smbus.SMBus(bus)
 
     def calibrate(self, tun_cap=None):
