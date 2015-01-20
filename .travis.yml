@@ -1,9 +1,17 @@
 language: python
-python:
-  - "2.7"
+python: 2.7
+env:
+  - TOX_ENV=pep8
+  - TOX_ENV=py26
+  - TOX_ENV=py27
+  - TOX_ENV=py34
 install:
-  - pip install pep8
+  - pip install --upgrade pip setuptools tox virtualenv
+matrix:
+  allow_failures:
+    - env: TOX_ENV=py26
+    - env: TOX_ENV=py34
 script:
-  - "pep8 --ignore=E501 RPi_AS3935 && pep8 --ignore=E501 *.py"
+  - "tox -e $TOX_ENV"
 notifications:
   email: false

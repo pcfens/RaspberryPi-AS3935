@@ -3,3 +3,8 @@
 build/
 MANIFEST
 dist/
+__pycache__/
+venv/
+RPi_AS3935.egg-info/
+.tox/
+.coverage
