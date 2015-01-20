@@ -7,7 +7,7 @@ env:
   - TOX_ENV=py34
   - TOX_ENV=flake8
 install:
-  - pip install --upgrade pip setuptools tox virtualenv
+  - pip install --upgrade pip setuptools tox virtualenv .
 matrix:
   allow_failures:
     - env: TOX_ENV=py26
