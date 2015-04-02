@@ -27,9 +27,9 @@ class RPi_AS3935:
                 raise Exception("Value of TUN_CAP must be between 0 and 15")
         self.set_byte(0x3D, 0x96)
         time.sleep(0.002)
+        self.read_data()
         self.set_byte(0x08, self.registers[0x08] | 0x20)
         time.sleep(0.002)
-        self.read_data()
         self.set_byte(0x08, self.registers[0x08] & 0xDF)
         time.sleep(0.002)
 

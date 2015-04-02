@@ -10,7 +10,6 @@ class RPi_AS3935Proxy(RPi_AS3935):
 
     def set_byte(self, register, value):
         self.registers[register] = value
-        print value
 
     def read_data(self):
         self.registers = self.registers
