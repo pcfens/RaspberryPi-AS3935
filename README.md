@@ -4,7 +4,7 @@ RaspberryPi-AS3935
 [![Build Status](https://travis-ci.org/pcfens/RaspberryPi-AS3935.png?branch=master)](https://travis-ci.org/pcfens/RaspberryPi-AS3935)
 
 A python library and demo script for interacting with the
-[AMS Franklin Lightning Sensor](http://www.ams.com/eng/Products/RF-Products/Lightning-Sensor/AS3935).
+[AMS Franklin Lightning Sensor](http://ams.com/eng/Products/Lightning-Sensor/Franklin-Lightning-Sensor/AS3935).
 
 This script will only work if the correct kernel modules are loaded
 on your Pi.  Adafruit has a nice [tutorial](http://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c)
