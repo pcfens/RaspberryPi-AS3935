@@ -49,8 +49,8 @@ You may need edit line 12 of demo.py so that the correct address is read.
 
 | Breakout Board | Default Address |
 | :------------- | :-------------- |
-| Embedded Adeventures v2 | 0x00 |
-| Embedded Adeventures v4 (untested) | 0x03 |
+| Embedded Adventures v2 | 0x00 |
+| Embedded Adventures v4/v8 | 0x03 |
 | Tautic Electronics (untested) | 0x00 |
 
 ### RaspberryPi Model
