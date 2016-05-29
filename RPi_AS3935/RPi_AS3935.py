@@ -57,6 +57,12 @@ class RPi_AS3935:
         else:
             return self.registers[0x07] & 0x3F
 
+    def get_energy(self):
+        """Get the calculated energy of the most recent lightning event
+        """
+        self.read_data()
+        return ((self.registers[0x06] & 0x1F) << 16) | (self.registers[0x05] << 8) | self.registers[0x04]
+
     def get_noise_floor(self):
         """Get the noise floor value.
 
