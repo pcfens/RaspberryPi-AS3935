@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='RPi_AS3935',
-    version='0.1.1',
+    version='0.2.0',
     description='Raspberry Pi <-I2C-> AS3935 lightning sensor communication library',
     author='Phil Fenstermacher',
     author_email='phillip.fenstermacher@gmail.com',
